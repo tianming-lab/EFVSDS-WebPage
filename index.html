@@ -72,7 +72,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Augmented Euclideanizing Flows: Stable and Flexible Sensorimotor Learning</h1>
+            <h1 class="title is-1 publication-title">Stable and Accurate Robot Trajectory Tracking Using Variable-Stiffness Euclideanizing Flow</h1>
 
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -103,7 +103,7 @@
       <img src="static/images/algorithm_framework.svg" alt="MY ALT TEXT"/>  
     </div>
     <p>
-      Structure of AEF. The conditional normalizing flows model takes the robotic arm's end-effector position $\mathbf{x}_c$ as input and utilizes the representation $\mathbf{h}$ obtained from feature extraction of environmental images ${{\mathbf{x}}_{nc}}$ as conditions. This setup maps the inputs into a latent variable space. Within this space, a dynamical system is defined by $\mathbf{\dot{z}}=-\mathbf{z}$, where the velocity is modulated by fully connected layers and ensured to be positive through exponential transformation. Ultimately, the desired end-effector velocity output in task space is achieved by computing the inverse of the Jacobian matrix of latent variable $\mathbf{z}$ concerning ${{\mathbf{x}}_{c}}$, mapping the latent space velocity back to task space. 
+      EFVSDS Algorithm Framework Diagram. The input data of complex trajectories is transformed into latent data of linear trajectories through diffeomorphism mapping $\Phi$, composed of a series of additive coupling layers ${\varphi _k}$. These latent data correspond to a simple and stable velocity field $f_N$. Using the inverse mapping $J_\Phi ^{ - 1}$, the data is then transformed back to obtain the stable velocity field $f_M$ corresponding to the complex trajectory. In the latent space, a simple convergence velocity field $g_N$ is designed based on the linear trajectory. This velocity field is transformed back to the observation space via the mapping $J_\Phi ^{\text{T}}$, generating a velocity field $g_M$ that converges to the complex trajectory. Subsequently, $g_M$ is standardized and scaled by an appropriate velocity $\nu$. It is then combined with $f_M$ to form the final trajectory tracking DS $f$ (i.e., EFVDS).
     </p>
   </div>
 </section>
@@ -117,7 +117,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Imitation learning with dynamical systems ensures stability, but often fails in multitask settings with high-dimensional observations. We propose augmented Euclideanizing flows (AEF), a framework that constructs diffeomorphic mappings from complex observations to a shared latent space, enabling stable policy learning across tasks. To improve robustness against various visual variations and to utilize asynchronously collected or unlabeled data, the framework incorporates a constraint on semantic consistency during training. In addition, implicit target learning is achieved by aligning goals with the latent-space origin, removing the need for explicit detection. The approach is supported by theoretical analysis and validated in simulation and real-world robotic experiments, demonstrating stable multitask modeling and effective handling of high-dimensional observations.
+            Imitation learning based on dynamical systems can generate real-time motion planning with intrinsic stability and robustness, providing significant advantages in highly uncertain dynamic environments. However, most dynamical system approaches tend to deviate from their original integral curves when subjected to perturbations, limiting their applicability in scenarios that require tracking specific reference trajectories or passing through critical path points. To address this issue, this paper proposes a variable stiffness Euclidean flow. Using diffeomorphic mapping, complex demonstrated trajectories are transformed into straight-line trajectories, eliminating the need for the integration process typically required to obtain integral curves. Furthermore, a gradient system based on these straight-line trajectories is designed to converge to the demonstrated trajectories, creating symmetric attractor-like behavior around the demonstrated trajectory. When applied to the original system, this approach preserves the desired velocity of the demonstrated trajectory. The effectiveness of the proposed method is demonstrated using standard datasets and real robot experiments.
           </p>
         </div>
       </div>
@@ -134,7 +134,7 @@
       <!-- TODO: Replace with your teaser video -->
       <video poster="" id="tree" controls muted height="100%" preload="auto">
         <!-- TODO: Add your video file path here -->
-        <source src="static/videos/AEF_ICRA_video.mp4" type="video/mp4">
+        <source src="static/videos/EFVSDS_Experiment.mp4" type="video/mp4">
       </video>
       <!-- TODO: Replace with your video description -->
       <h2 class="subtitle has-text-centered">
